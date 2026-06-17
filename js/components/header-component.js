@@ -9,6 +9,7 @@
     const headerPath = currentScript?.dataset.headerSrc || "pages/header.html";
     const cssPath = currentScript?.dataset.headerCss || "assets/css/header-style.css";
     const homeUrl = currentScript?.dataset.homeUrl || "index.html";
+    const contactUrl = currentScript?.dataset.contactUrl || "pages/contact.html";
 
     function loadHeaderStyles() {
         const existingLink = document.querySelector(`link[href="${cssPath}"]`);
@@ -43,6 +44,7 @@
                 target.querySelector("[data-header-search]")?.setAttribute("href", `${homeUrl}#resultado`);
                 target.querySelector("[data-header-favorites]")?.setAttribute("href", `${homeUrl}#favoritos`);
                 target.querySelector("[data-header-capture]")?.setAttribute("href", `${homeUrl}#pokemonInput`);
+                target.querySelector("[data-header-contact]")?.setAttribute("href", contactUrl);
             });
         } catch (error) {
             console.error(error);

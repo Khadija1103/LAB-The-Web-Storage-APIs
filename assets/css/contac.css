@@ -1,0 +1,98 @@
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #74ebd5, #acb6e5);
+}
+
+.contact-main {
+    padding-block: 48px;
+}
+
+.contact-shell {
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(51, 51, 51, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 20px 45px rgba(51, 51, 51, 0.18);
+}
+
+.contact-hero {
+    height: 100%;
+    color: #333;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.85), transparent 28%),
+        linear-gradient(145deg, #74ebd5, #acb6e5);
+}
+
+.contact-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 0.35rem 0.85rem;
+    color: #1f4f91;
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.72);
+    border-radius: 999px;
+}
+
+.contact-hero__title {
+    color: #333;
+    font-weight: 800;
+}
+
+.contact-hero__text {
+    color: #49606f;
+}
+
+.contact-pokeball {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: url("../../img/pokemon.png") center / contain no-repeat;
+    box-shadow: 0 14px 28px rgba(51, 51, 51, 0.2);
+}
+
+.contact-form-title,
+.contact-list-title {
+    color: #333;
+    font-weight: 800;
+}
+
+.contact-card {
+    border: 1px solid rgba(51, 51, 51, 0.1);
+    border-radius: 8px;
+}
+
+.contact-card__name {
+    color: #1f4f91;
+    font-weight: 800;
+}
+
+.contact-card__message {
+    color: #49606f;
+}
+
+.contact-submit {
+    color: #333;
+    font-weight: 800;
+    background: linear-gradient(135deg, #74ebd5, #acb6e5);
+    border: 0;
+}
+
+.contact-submit:hover,
+.contact-submit:focus {
+    color: #333;
+    box-shadow: 0 10px 22px rgba(116, 235, 213, 0.28);
+}
+
+@media (max-width: 767.98px) {
+    .contact-main {
+        padding-block: 28px;
+    }
+
+    .contact-pokeball {
+        width: 74px;
+        height: 74px;
+    }
+}
