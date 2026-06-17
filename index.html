@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Pokémon Favoritos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        #resultado img,
+        .favorito img {
+            width: 120px;
+        }
+
+        #favoritos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .favorito {
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 10px;
+            width: 150px;
+        }
+
+        button {
+            margin: 5px;
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Buscador de Pokémon</h1>
+
+    <input type="text" id="pokemonInput" placeholder="Nombre del Pokémon">
+    <button onclick="searchPokemon()">Buscar</button>
+
+    <div id="resultado"></div>
+
+    <button onclick="saveFavorite()">Guardar como Favorito</button>
+
+    <h2>Mis Favoritos</h2>
+    <div id="favoritos"></div>
+
+    <script>
+
+        let pokemonActual = null;
+
+        async function searchPokemon() {
+
+            const nombre = document
+                .getElementById("pokemonInput")
+                .value
+                .toLowerCase()
+                .trim();
+
+            if (!nombre) {
+                alert("Ingrese un nombre");
+                return;
+            }
+
+            try {
+
+                const response = await fetch(
+                    `https://pokeapi.co/api/v2/pokemon/${nombre}`
+                );
+
+                if (!response.ok) {
+                    throw new Error("No encontrado");
+                }
+
+                const data = await response.json();
+
+                pokemonActual = {
+                    name: data.name,
+                    image: data.sprites.front_default
+                };
+
+                document.getElementById("resultado").innerHTML = `
+                    <h3>${pokemonActual.name}</h3>
+                    <img src="${pokemonActual.image}" alt="${pokemonActual.name}">
+                `;
+
+            } catch (error) {
+                alert("Pokémon no encontrado");
+            }
+        }
+
+        function saveFavorite() {
+
+            if (!pokemonActual) {
+                alert("Primero busca un Pokémon");
+                return;
+            }
+
+            let favoritos =
+                JSON.parse(localStorage.getItem("favoritos")) || [];
+
+            const existe = favoritos.some(
+                pokemon => pokemon.name === pokemonActual.name
+            );
+
+            if (!existe) {
+
+                favoritos.push(pokemonActual);
+
+                localStorage.setItem(
+                    "favoritos",
+                    JSON.stringify(favoritos)
+                );
+
+                updateFavoritesList();
+            } else {
+                alert("Este Pokémon ya está en favoritos");
+            }
+        }
+
+        function updateFavoritesList() {
+
+            const favoritos =
+                JSON.parse(localStorage.getItem("favoritos")) || [];
+
+            const contenedor =
+                document.getElementById("favoritos");
+
+            contenedor.innerHTML = "";
+
+            favoritos.forEach(pokemon => {
+
+                const div = document.createElement("div");
+
+                div.classList.add("favorito");
+
+                div.innerHTML = `
+                    <h4>${pokemon.name}</h4>
+                    <img src="${pokemon.image}" alt="${pokemon.name}">
+                `;
+
+                contenedor.appendChild(div);
+            });
+        }
+
+        window.onload = function () {
+            updateFavoritesList();
+        };
+
+    </script>
+
+</body>
+</html>
