@@ -1,0 +1,37 @@
+<header class="pokemon-header shadow-sm">
+    <nav class="navbar navbar-expand-lg pokemon-navbar" aria-label="Navegacion principal Pokemon">
+        <div class="container">
+            <a class="navbar-brand pokemon-brand" href="index.html" data-header-home>
+                <span class="pokemon-brand__mark" aria-hidden="true"></span>
+                <span class="pokemon-brand__text">
+                    <span>PokeStorage</span>
+                    <small>Favoritos Pokemon</small>
+                </span>
+            </a>
+
+            <button class="navbar-toggler pokemon-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#pokemonHeaderNav" aria-controls="pokemonHeaderNav" aria-expanded="false"
+                aria-label="Abrir menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="pokemonHeaderNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link pokemon-nav-link active" aria-current="page" href="index.html" data-header-home>Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pokemon-nav-link" href="index.html#resultado" data-header-search>Buscar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pokemon-nav-link" href="index.html#favoritos" data-header-favorites>Favoritos</a>
+                    </li>
+                </ul>
+
+                <a class="btn pokemon-action ms-lg-3" href="index.html#pokemonInput" data-header-capture>
+                    Capturar
+                </a>
+            </div>
+        </div>
+    </nav>
+</header>
